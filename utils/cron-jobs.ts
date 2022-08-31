@@ -4,7 +4,7 @@ import { updateCurrencyMarketData } from "../services/coins.market.service";
 
 export const updateCoinsData = () => {
     //At every 30 seconds.
-    new CronJob('*/15 * * * * *', async () =>{
+    new CronJob('*/1 * * * *', async () =>{
        await updateCurrencyMarketData();
     }).start();
 
@@ -26,8 +26,8 @@ export const updateCoinsData = () => {
             .catch(err => console.log('When updating month requests ' + err.message));
     }).start();
 
-    //At every 14th day of the month
-    new CronJob('0 12 */14 * *', async () => {
+    //At minute 15 past every 24th hour.
+    new CronJob('10 */24 * * *', async () => {
         await updateChartHistory(365)
             .catch(err => console.log('When updating year requests ' + err.message));
     }).start();
