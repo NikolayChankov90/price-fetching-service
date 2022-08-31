@@ -1,0 +1,6 @@
+node_modules/
+.idea/
+.env
+.env-example
+change-price-fetcher-service/logs
+build/
